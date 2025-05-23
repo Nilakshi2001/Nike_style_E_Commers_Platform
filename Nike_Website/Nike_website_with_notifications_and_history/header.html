@@ -1,0 +1,58 @@
+<nav class="nav">
+  <div class="nav-part-1">
+    <img src="images/logo.png" alt="Nike Logo" class="logo" />
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </div>
+  <div class="nav-part-2">
+    <a href="product.html#search"><i class="ri-search-line"></i></a>
+    <a href="product.html#cart"><i class="ri-shopping-cart-2-line"></i><span id="cart-count" class="cart-count">0</span></a>
+  </div>
+
+<div class="menu-toggle" onclick="document.getElementById('sidebar-menu').classList.toggle('visible')">
+  <i class="ri-menu-line"></i>
+</div>
+<div id="sidebar-menu" class="sidebar-menu">
+  <div class="menu-section">
+    <a href="user-profile.html">Profile</a>
+    <a href="order-history.html">Orders</a>
+    <a href="cart.html">Cart</a>
+  </div>
+  <div class="menu-section">
+    <a href="admin-dashboard.html">Dashboard</a>
+    <a href="admin-products.html">Manage Products</a>
+    <a href="orders.html">Manage Orders</a>
+  </div>
+</div>
+<style>
+  .menu-toggle { cursor: pointer; padding: 10px; font-size: 24px; }
+  .sidebar-menu {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+    width: 220px;
+  }
+  .sidebar-menu.visible { display: block; }
+  .sidebar-menu .menu-section { margin-bottom: 10px; }
+  .sidebar-menu .menu-section a {
+    display: block;
+    padding: 5px;
+    color: #333;
+    text-decoration: none;
+  }
+  .sidebar-menu .menu-section a:hover {
+    background-color: #f0f0f0;
+  }
+</style>
+</nav>

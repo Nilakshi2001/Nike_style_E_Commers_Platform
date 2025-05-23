@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nike Products</title>
+<link href="product-style.css" rel="stylesheet"/>
+</head>
+<body><div id="header"></div>
+<header>
+<div class="container">
+
+</div>
+</header>
+<main class="products">
+<div class="search-container">
+<input id="search-input" placeholder="Search products..." type="text"/>
+</div>
+<h1>Our Products</h1>
+<div class="product-grid">
+<div class="product-card">
+<img alt="Shoe 1" src="images/shoe1.jpeg"/>
+<h3>Nike Air Max</h3>
+<p>Comfort and style in one.</p>
+<button>Add to Cart</button>
+</div>
+<div class="product-card">
+<img alt="Shoe 2" src="images/shoe2.jpeg"/>
+<h3>Nike Revolution</h3>
+<p>Great for running and everyday wear.</p>
+<button>Add to Cart</button>
+</div>
+<div class="product-card">
+<img alt="Shoe 3" src="images/shoe3.jpeg"/>
+<h3>Nike ZoomX</h3>
+<p>Engineered for speed and power.</p>
+<button>Add to Cart</button>
+</div>
+<div class="product-card">
+<img alt="Shoe 4" src="images/shoe4.jpeg"/>
+<h3>Nike Pegasus</h3>
+<p>Classic design meets modern performance.</p>
+<button>Add to Cart</button>
+</div>
+<div class="product-card">
+<img alt="Shoe 5" src="images/shoe5.jpeg"/>
+<h3>Nike Blazer</h3>
+<p>Retro look, modern materials.</p>
+<button>Add to Cart</button>
+</div>
+</div>
+</main>
+
+<script>
+    const searchInput = document.getElementById("search-input");
+    const productCards = document.querySelectorAll(".product-card");
+  
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      productCards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        const description = card.querySelector("p").textContent.toLowerCase();
+        const match = title.includes(query) || description.includes(query);
+        card.style.display = match ? "block" : "none";
+      });
+    });
+  </script>
+<script>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    document.querySelectorAll(".product-card").forEach(card => {
+      const button = card.querySelector("button");
+      button.addEventListener("click", () => {
+        const product = {
+          name: card.querySelector("h3").textContent,
+          description: card.querySelector("p").textContent,
+          image: card.querySelector("img").src
+        };
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(product.name + " added to cart!");
+      });
+    });
+  </script>
+<div id="footer"></div><script src="include.js"></script></body>
+</html>

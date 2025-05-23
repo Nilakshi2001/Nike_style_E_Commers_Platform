@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="profile.html">Profile</a>
+      <a href="logout.html">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section style="padding:20px;">
+      <h2>Welcome, <span id="username"></span>!</h2>
+      <p>Your email: <span id="useremail"></span></p>
+    </section>
+
+    <section style="padding:20px;">
+      <h2>Your Orders</h2>
+      <div id="order-history"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Nike Clone. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("currentUser") || "{}");
+    document.getElementById("username").textContent = user.name || "Guest";
+    document.getElementById("useremail").textContent = user.email || "N/A";
+
+    const orders = JSON.parse(localStorage.getItem("orders") || "{}");
+    const userOrders = orders[user.email] || [];
+    const container = document.getElementById("order-history");
+
+    if (userOrders.length === 0) {
+      container.innerHTML = "<p>No orders yet.</p>";
+    } else {
+      container.innerHTML = userOrders.map(o => `
+        <div style="margin-bottom: 10px; border-bottom:1px solid #ccc; padding-bottom:10px;">
+          <strong>${new Date(o.date).toLocaleString()}</strong>
+          <ul>${o.items.map(i => `<li>${i.name} x ${i.quantity}</li>`).join("")}</ul>
+        </div>
+      `).join("");
+    }
+  </script>
+</body>
+</html>

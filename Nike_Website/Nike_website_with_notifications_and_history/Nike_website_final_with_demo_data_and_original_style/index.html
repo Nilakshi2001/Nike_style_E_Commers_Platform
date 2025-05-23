@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nike</title>
+<!-- Google Fonts and Remix Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<!-- Main CSS -->
+<link href="style.css" rel="stylesheet">
+</link></link></head>
+<body><div id="header"></div>
+<div class="main">
+<!-- Navigation Bar -->
+
+<!-- Hero Section -->
+<section class="content">
+<div class="content-left">
+<h5>Explore limited edition</h5>
+<h1>Nike Limited Edition</h1>
+<p>Unleash the extraordinary. Elevate your game with Nike's Limited Edition. Where innovation meets style. Just do it.</p>
+<button class="btn">Shop Now</button>
+</div>
+<div class="content-right">
+<!-- Product Cards -->
+<div class="product">
+<img alt="Nike Air Max 1" src="images/shoe1.jpeg"/>
+<h4>Nike Air Max 1</h4>
+<p class="category">Men's Shoes</p>
+<p class="color">Color: White</p>
+<p class="price">Rs. 14,999</p>
+</div>
+<div class="product">
+<img alt="Nike Air Max 2" src="images/shoe2.jpeg"/>
+<h4>Nike Air Max 2</h4>
+<p class="category">Men's Shoes</p>
+<p class="color">Color: Red</p>
+<p class="price">Rs. 13,499</p>
+</div>
+<div class="product">
+<img alt="Nike Air Max 3" src="images/shoe3.jpeg"/>
+<h4>Nike Air Max 3</h4>
+<p class="category">Men's Shoes</p>
+<p class="color">Color: Blue</p>
+<p class="price">Rs. 12,999</p>
+</div>
+<div class="product">
+<img alt="Nike Air Max 4" src="images/shoe4.jpeg"/>
+<h4>Nike Air Max 4</h4>
+<p class="category">Men's Shoes</p>
+<p class="color">Color: Black</p>
+<p class="price">Rs. 15,299</p>
+</div>
+<div class="product">
+<img alt="Nike Air Max 5" src="images/shoe5.jpeg"/>
+<h4>Nike Air Max 5</h4>
+<p class="category">Men's Shoes</p>
+<p class="color">Color: Grey</p>
+<p class="price">Rs. 13,999</p>
+</div>
+</div>
+</section>
+</div>
+<script>
+  let searchTerm = "";
+  let filter = "";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+    searchInput.addEventListener("input", () => {
+      searchTerm = searchInput.value.toLowerCase();
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+
+    categoryFilter.addEventListener("change", () => {
+      filter = categoryFilter.value;
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+  });
+
+    // Update cart count from localStorage
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cart-count").textContent = cart.length;
+    }
+  
+    updateCartCount();
+  
+<script>
+  let searchTerm = "";
+  let filter = "";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+    searchInput.addEventListener("input", () => {
+      searchTerm = searchInput.value.toLowerCase();
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+
+    categoryFilter.addEventListener("change", () => {
+      filter = categoryFilter.value;
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+  });
+
+  function addToWishlist(index) {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("Please log in.");
+      return;
+    }
+
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const product = products[index];
+    const key = "wishlist_" + user.email;
+    const wishlist = JSON.parse(localStorage.getItem(key)) || [];
+    if (!wishlist.find(p => p.name === product.name)) {
+      wishlist.push(product);
+      localStorage.setItem(key, JSON.stringify(wishlist));
+      alert("Added to wishlist!");
+    } else {
+      alert("Already in wishlist.");
+    }
+  }
+</script>
+
+<script>
+  let searchTerm = "";
+  let filter = "";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+    searchInput.addEventListener("input", () => {
+      searchTerm = searchInput.value.toLowerCase();
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+
+    categoryFilter.addEventListener("change", () => {
+      filter = categoryFilter.value;
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+  });
+
+    const menuIcon = document.getElementById("menu-icon");
+    const navLinks = document.getElementById("nav-links");
+  
+    menuIcon.addEventListener("click", () => {
+      navLinks.classList.toggle("nav-visible");
+    });
+  
+<script>
+  let searchTerm = "";
+  let filter = "";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+    searchInput.addEventListener("input", () => {
+      searchTerm = searchInput.value.toLowerCase();
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+
+    categoryFilter.addEventListener("change", () => {
+      filter = categoryFilter.value;
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+  });
+
+  function addToWishlist(index) {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("Please log in.");
+      return;
+    }
+
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const product = products[index];
+    const key = "wishlist_" + user.email;
+    const wishlist = JSON.parse(localStorage.getItem(key)) || [];
+    if (!wishlist.find(p => p.name === product.name)) {
+      wishlist.push(product);
+      localStorage.setItem(key, JSON.stringify(wishlist));
+      alert("Added to wishlist!");
+    } else {
+      alert("Already in wishlist.");
+    }
+  }
+</script>
+
+<div id="footer"></div><script src="include.js">
+<script>
+  let searchTerm = "";
+  let filter = "";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+    searchInput.addEventListener("input", () => {
+      searchTerm = searchInput.value.toLowerCase();
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+
+    categoryFilter.addEventListener("change", () => {
+      filter = categoryFilter.value;
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+  });
+
+  function addToWishlist(index) {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("Please log in.");
+      return;
+    }
+
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const product = products[index];
+    const key = "wishlist_" + user.email;
+    const wishlist = JSON.parse(localStorage.getItem(key)) || [];
+    if (!wishlist.find(p => p.name === product.name)) {
+      wishlist.push(product);
+      localStorage.setItem(key, JSON.stringify(wishlist));
+      alert("Added to wishlist!");
+    } else {
+      alert("Already in wishlist.");
+    }
+  }
+</script>
+<script src="products.js">
+<script>
+  let searchTerm = "";
+  let filter = "";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+    searchInput.addEventListener("input", () => {
+      searchTerm = searchInput.value.toLowerCase();
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+
+    categoryFilter.addEventListener("change", () => {
+      filter = categoryFilter.value;
+      const categoryFilter = document.getElementById("categoryFilter");
+    const cats = [...new Set(products.map(p => p.category))];
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+    renderProducts();
+    });
+  });
+
+  function addToWishlist(index) {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("Please log in.");
+      return;
+    }
+
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const product = products[index];
+    const key = "wishlist_" + user.email;
+    const wishlist = JSON.parse(localStorage.getItem(key)) || [];
+    if (!wishlist.find(p => p.name === product.name)) {
+      wishlist.push(product);
+      localStorage.setItem(key, JSON.stringify(wishlist));
+      alert("Added to wishlist!");
+    } else {
+      alert("Already in wishlist.");
+    }
+  }
+</script>
+
+
+<section style="padding: 40px; background-color: #f8f8f8; font-family: sans-serif;">
+  <h2>User Features</h2>
+  <ul style="line-height: 2;">
+    <li><a href="login.html">🔐 Login</a></li>
+    <li><a href="register.html">📝 Register</a></li>
+    <li><a href="user-profile.html">👤 View Profile</a></li>
+    <li><a href="order-history.html">📦 Order History</a></li>
+    <li><a href="cart.html">🛒 View Cart</a></li>
+  </ul>
+
+  <h2>Admin Features</h2>
+  <ul style="line-height: 2;">
+    <li><a href="admin.html">🛠 Admin Login</a></li>
+    <li><a href="admin-dashboard.html">📊 Admin Dashboard</a></li>
+    <li><a href="admin-products.html">📦 Manage Products</a></li>
+    <li><a href="orders.html">📋 View All Orders</a></li>
+  </ul>
+
+  <h2>Other Pages</h2>
+  <ul style="line-height: 2;">
+    <li><a href="contact.html">📨 Contact Us</a></li>
+    <li><a href="about.html">ℹ️ About Page</a></li>
+  </ul>
+</section>
+
+</body>
+</html>

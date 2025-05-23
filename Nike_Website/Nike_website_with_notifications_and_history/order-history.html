@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Order History</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main style="padding: 20px; max-width: 800px; margin: auto;">
+    <h2>Order History</h2>
+    <div id="orders"></div>
+  </main>
+  <div id="footer"></div>
+  <script src="include.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("Please log in.");
+      window.location.href = "login.html";
+    }
+
+    const orders = JSON.parse(localStorage.getItem("orders_" + user.email)) || [];
+    const ordersContainer = document.getElementById("orders");
+
+    if (orders.length === 0) {
+      ordersContainer.innerHTML = "<p>No orders found.</p>";
+    } else {
+      ordersContainer.innerHTML = orders.map(order => \`
+        <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+          <p><strong>Date:</strong> \${order.date}</p>
+          <p><strong>Name:</strong> \${order.name}</p>
+          <p><strong>Address:</strong> \${order.address}</p>
+          <p><strong>Phone:</strong> \${order.phone}</p>
+          <p><strong>Total:</strong> $\${order.total.toFixed(2)}</p>
+          <ul>
+            \${order.items.map(item => \`
+              <li>\${item.name} - \$\${item.price} x \${item.quantity}</li>
+            \`).join("")}
+          </ul>
+        </div>
+      \`).join("");
+    }
+  </script>
+
+<section style="padding: 20px; font-family: sans-serif;">
+  <h2>Recent Orders</h2>
+  <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; margin-top: 10px;">
+    <tr>
+      <th>Order ID</th>
+      <th>Date</th>
+      <th>Items</th>
+      <th>Total</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td>#1001</td>
+      <td>2025-04-25</td>
+      <td>Nike Air Max 2023 (x1)</td>
+      <td>$149.99</td>
+      <td>Delivered</td>
+    </tr>
+    <tr>
+      <td>#1002</td>
+      <td>2025-04-28</td>
+      <td>Nike Revolution 6 (x2)</td>
+      <td>$179.98</td>
+      <td>Shipped</td>
+    </tr>
+  </table>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main style="padding: 20px;">
+    <h2>All Users</h2>
+    <div id="user-list"></div>
+  </main>
+  <div id="footer"></div>
+  <script src="include.js"></script>
+  <script>
+    const userList = document.getElementById("user-list");
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    userList.innerHTML = users.map((user, index) => \`
+      <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+        <strong>\${user.name}</strong> (\${user.email})
+        <button onclick="deleteUser(\${index})">Delete</button>
+      </div>
+    \`).join("");
+
+    function deleteUser(index) {
+      if (confirm("Delete this user?")) {
+        users.splice(index, 1);
+        localStorage.setItem("users", JSON.stringify(users));
+        location.reload();
+      }
+    }
+  </script>
+</body>
+</html>

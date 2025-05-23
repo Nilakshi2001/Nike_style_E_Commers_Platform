@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main style="padding: 20px; max-width: 600px; margin: auto;">
+    <h2>User Profile</h2>
+    <div id="profile"></div>
+    <a href="order-history.html"><button>View Order History</button></a>
+  
+    <h3>Your Wishlist</h3>
+    <div id="wishlist"></div>
+    </main>
+
+  <div id="footer"></div>
+  <script src="include.js">
+    const wishlist = JSON.parse(localStorage.getItem("wishlist_" + user.email)) || [];
+    const wishlistDiv = document.getElementById("wishlist");
+    wishlistDiv.innerHTML = wishlist.map(p => `
+      <div style="margin: 10px 0; border: 1px solid #ccc; padding: 10px;">
+        <img src="${p.image}" style="width:80px;"><br>
+        ${p.name} - $${p.price}
+      </div>
+    `).join("");
+</script>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("Please log in.");
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("profile").innerHTML = `
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+      `;
+    }
+  
+    const wishlist = JSON.parse(localStorage.getItem("wishlist_" + user.email)) || [];
+    const wishlistDiv = document.getElementById("wishlist");
+    wishlistDiv.innerHTML = wishlist.map(p => `
+      <div style="margin: 10px 0; border: 1px solid #ccc; padding: 10px;">
+        <img src="${p.image}" style="width:80px;"><br>
+        ${p.name} - $${p.price}
+      </div>
+    `).join("");
+</script>
+
+</body>
+</html>

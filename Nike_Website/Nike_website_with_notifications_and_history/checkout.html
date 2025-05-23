@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main style="padding: 20px; max-width: 600px; margin: auto;">
+    <h2>Checkout</h2>
+    <form id="checkout-form">
+      <label>Name: <input type="text" name="name" required /></label><br><br>
+      <label>Address: <input type="text" name="address" required /></label><br><br>
+      <label>Phone: <input type="text" name="phone" required /></label><br><br>
+      <button type="submit">Place Order</button>
+    <label>Card Number: <input type="text" required /></label><br><br>
+      <label>Expiry Date: <input type="text" placeholder="MM/YY" required /></label><br><br>
+      <label>CVV: <input type="password" required /></label><br><br>
+      </form>
+  </main>
+  <div id="footer"></div>
+  <script src="include.js"></script>
+  <script>
+    document.getElementById("checkout-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const user = JSON.parse(localStorage.getItem("loggedInUser"));
+      if (!user) {
+        alert("Please log in.");
+        return;
+      }
+
+      const form = e.target;
+      const cartKey = "cart_" + user.email;
+      const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+      if (cart.length === 0) {
+        alert("Cart is empty.");
+        return;
+      }
+
+      const order = {
+        name: form.name.value,
+        address: form.address.value,
+        phone: form.phone.value,
+        items: cart,
+        total: cart.reduce((sum, p) => sum + (p.price * p.quantity), 0),
+        date: new Date().toLocaleString()
+      };
+
+      const ordersKey = "orders_" + user.email;
+      const orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+      orders.push(order);
+      localStorage.setItem(ordersKey, JSON.stringify(orders));
+      // Reduce stock
+      const allProducts = JSON.parse(localStorage.getItem("products")) || [];
+      cart.forEach(ci => {
+        const pi = allProducts.findIndex(p => p.name === ci.name);
+        if (pi > -1) allProducts[pi].stock -= ci.quantity;
+      });
+      localStorage.setItem("products", JSON.stringify(allProducts));
+      localStorage.removeItem(cartKey);
+      alert("Order placed successfully!");
+      window.location.href = "order-history.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Products - Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
+
+  <main>
+    <h2 style="text-align:center">Add New Product</h2>
+    <form id="product-form" style="max-width: 500px; margin: auto;">
+      <label>Product Name: <input type="text" name="name" required /></label><br><br>
+      <label>Price ($): <input type="number" name="price" required /></label><br><br>
+      <label>Category: <input type="text" name="category" required /></label><br><br>
+      <label>Image: <input type="file" id="imageInput" accept="image/*" required /></label><br><br>
+      <img id="preview" src="" alt="Image Preview" style="max-width: 100px; display:none;"><br>
+      <button type="submit">Save Product</button>
+    </form>
+
+    <h2 style="text-align:center; margin-top:40px;">Current Products</h2>
+    <div id="product-list" style="padding: 20px;"></div>
+  </main>
+
+  <div id="footer"></div>
+  <script src="include.js"></script>
+  <script src="admin-products.js"></script>
+
+<section style="padding: 20px; font-family: sans-serif;">
+  <h2>Manage Products</h2>
+  <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; margin-top: 10px;">
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><img src="images/nike1.jpg" alt="Nike Air Max" width="60"></td>
+      <td>Nike Air Max 2023</td>
+      <td>$149.99</td>
+      <td><button>Edit</button> <button>Delete</button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><img src="images/nike2.jpg" alt="Nike Revolution" width="60"></td>
+      <td>Nike Revolution 6</td>
+      <td>$89.99</td>
+      <td><button>Edit</button> <button>Delete</button></td>
+    </tr>
+  </table>
+</section>
+
+</body>
+</html>
